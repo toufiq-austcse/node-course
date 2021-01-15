@@ -1,3 +1,3 @@
 const { bootstrap } = require('./core');
-
-bootstrap();
+const apiConfig = require('./api');
+bootstrap(apiConfig);
