@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router({ mergeParams: true });
-const ProductController = require('./controller');
-const config = require('../../api/config');
 
-let controller = new ProductController(config.getDB().get('products'));
+let controller = require('./controller');
 
 router.get('/', (req, res) => {
         res.status(200).send(controller.getProducts())

@@ -15,11 +15,13 @@ function createApp() {
 }
 
 
+
 function bootstrap(apiConfig) {
         const app = createApp();
+      
 
         // attach the apis
-        app.use(apiConfig.config.ENDPOINT,apiConfig.route);
+        app.use(apiConfig.config.ENDPOINT, apiConfig.route);
         const port = process.env.PORT || config.DEFAULT_PORT;
         const server = app.listen(port, () => {
                 console.log(`Server is up and running at: ${port}`);
