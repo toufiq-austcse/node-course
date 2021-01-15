@@ -1,25 +1,25 @@
+class ProductController {
+        constructor(model) {
+                this.productModel = model;
+        }
 
-let products = [];
-function getProducts() {
-        return products;
+        getProducts() {
+                return this.productModel.value();
+        }
+
+        createProduct(product) {
+                this.productModel.push(product).write();
+        }
+
+        deleteProduct(id) {
+                this.productModel.remove({ id: Number(id) }).write();
+        }
+
+        getProduct(id) {
+                const found = this.productModel.filter({ id: Number(id) }).value();
+                return found.length ? found[0] : {};
+        }
 }
 
-function createProduct(product) {
-        products.push(product);
-}
 
-function deleteProduct(id) {
-        products = products.filter(product => Number(id) !== product.id);
-}
-
-function getProduct(id) {
-        const found = products.filter(product => Number(id) === product.id);
-        return found.length ? found[0] : {};
-}
-
-module.exports = {
-        getProduct,
-        createProduct,
-        deleteProduct,
-        getProducts
-}
+module.exports = ProductController;
